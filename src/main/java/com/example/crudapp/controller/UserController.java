@@ -1,7 +1,10 @@
 package com.example.crudapp.controller;
 
+import com.example.crudapp.dto.UserResponseDTO;
+import com.example.crudapp.dto.UserUpdateDTO;
 import com.example.crudapp.model.UserModel;
 import com.example.crudapp.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("getUser/{id}")
-    public UserModel getById(@PathVariable Long id) {
+    public UserResponseDTO getById(@PathVariable Long id) {
         return userService.getById(id);
     }
 
@@ -31,7 +34,7 @@ public class UserController {
     }
 
     @PutMapping("updateUser/{id}")
-    public UserModel updateUser(@PathVariable Long id, @RequestBody UserModel updated) {
+    public UserUpdateDTO updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO updated) {
         return userService.updateUser(id, updated);
     }
 

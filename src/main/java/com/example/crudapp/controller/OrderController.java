@@ -1,7 +1,10 @@
 package com.example.crudapp.controller;
 
+import com.example.crudapp.dto.OrderCreateDTO;
+import com.example.crudapp.dto.OrderResponseDTO;
 import com.example.crudapp.model.OrderModel;
 import com.example.crudapp.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +19,7 @@ public class OrderController {
     }
 
     @PostMapping("/createOrder")
-    public OrderModel create(@RequestBody OrderModel order) {
+    public OrderModel create(@RequestBody @Valid OrderCreateDTO order) {
         return orderService.create(order);
     }
 
@@ -26,12 +29,12 @@ public class OrderController {
     }
 
     @GetMapping("getOrder/{id}")
-    public OrderModel getById(@PathVariable Long id) {
+    public OrderResponseDTO getById(@PathVariable Long id) {
         return orderService.getById(id);
     }
 
     @PutMapping("updateOrder/{id}")
-    public OrderModel updateOrder(@PathVariable Long id, @RequestBody OrderModel updated) {
+    public OrderModel updateOrder(@PathVariable Long id, @RequestBody @Valid OrderResponseDTO updated) {
         return orderService.updateOrder(id, updated);
     }
 

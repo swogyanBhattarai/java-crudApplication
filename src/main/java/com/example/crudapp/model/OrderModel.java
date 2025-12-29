@@ -20,11 +20,9 @@ public class OrderModel {
     @Column(nullable = false)
     private Double productPrice;
 
-    @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
@@ -36,8 +34,15 @@ public class OrderModel {
     public Long getOrderId() {return orderId;}
     public String getProductName() {return productName;}
     public Double getProductPrice() {return productPrice;}
+    public LocalDateTime getCreatedAt() {return createdAt;}
+    public LocalDateTime getUpdatedAt() {return updatedAt;}
+    public UserModel getUser() {return user;}
 
     //setters
+    public void setOrderId(Long orderId) {this.orderId = orderId;}
     public void setProductName(String productName) {this.productName = productName;}
     public void setProductPrice(Double productPrice) {this.productPrice = productPrice;}
+    public void setCreatedAt(LocalDateTime createdAt) {this.createdAt = createdAt;}
+    public void setUpdatedAt(LocalDateTime updatedAt) {this.updatedAt= updatedAt;}
+    public void setUser(UserModel user) {this.user = user;}
 }
